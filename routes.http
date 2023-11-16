@@ -1,0 +1,49 @@
+// Create user
+POST http://localhost:3001/register
+Content-Type: application/json
+
+{
+    "name": "teste",
+    "email": "testesi0@gmail.com",
+    "password": "1234567"
+}
+
+### // Login user
+POST http://localhost:3001/login
+Content-Type: application/json
+
+{
+    "email": "mirulandos@gmail.com",
+    "password": "1234567"
+}
+
+### // list users
+GET http://localhost:3001/users
+
+
+### 
+DELETE http://localhost:3001/delete-user/mirulando@gmail.com
+
+
+// ORDERS
+
+// All orders
+###
+GET http://localhost:3001/orders
+
+###
+GET http://localhost:3001/orders/8eb554cc-50c3-4ebc-b1df-1ff570e71ed2
+
+
+
+###
+POST  http://localhost:3001/create-order
+Content-Type: application/json
+
+{
+    "orderId": "8eb554cc-50c3-4ebc-b1df-1ff570e71ed2",
+    "name": "MidleWare",
+    "date": "20/07 as 20:00 hr",
+    "location": "Rua tupi guarani 240",
+    "quantity": 3
+}

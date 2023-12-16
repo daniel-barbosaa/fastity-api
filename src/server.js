@@ -1,11 +1,21 @@
-import { fastify } from 'fastify';
+import {fastify} from 'fastify';
+import fastifyCors from '@fastify/cors';
 import * as Yup from 'yup';
 import { v4 as uuidv4 } from 'uuid';
 import { sql } from "../db.js"
 import { Orders } from './order-database.js';
 import { Users } from './user-database.js';
+
+
 const server = fastify();
+
+server.register(fastifyCors)
+
+
+
 const port = 3001;
+
+
 
 // Método GET, POST, PUT, REMOVE
 

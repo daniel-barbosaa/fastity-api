@@ -70,11 +70,12 @@ server.post('/register', async (req, resp) => {
 });
 
 // Login
-server.post('/login', async (req, resp) => {
+server.post('/session', async (req, resp) => {
   const { email, password } = req.body
 
+
   const schema = Yup.object().shape({
-    email: Yup.string().email(),
+    email: Yup.string().email().required(),
     password: Yup.string().required().min(6),
   })
   try {
@@ -86,9 +87,10 @@ server.post('/login', async (req, resp) => {
   const users = await sql`select * from users`
   const user = users.find((user) => user.email === email)
 
-  if (!user) {
+  if(!user) {
+    console.log('usuario nao encontrado')
     return resp.status(400).send({
-      error: false,
+      error: true,
       messagem: "Usuário não encontado!"
     })
   }
@@ -101,8 +103,12 @@ server.post('/login', async (req, resp) => {
   }
 
   return resp.status(200).send({
-    error: false,
-    messagem: "Logado com sucesso!"
+    // error: false,
+    // messagem: "Logado com sucesso!",
+    email: user.email,
+    id: user.id,
+    name: user.name
+
   })
 });
 

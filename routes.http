@@ -9,7 +9,7 @@ Content-Type: application/json
 }
 
 ### // Login user
-POST http://localhost:3001/login
+POST http://localhost:3001/session
 Content-Type: application/json
 
 {

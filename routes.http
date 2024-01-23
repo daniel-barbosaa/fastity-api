@@ -4,7 +4,7 @@ Content-Type: application/json
 
 {
     "name": "teste",
-    "email": "testesi0@gmail.com",
+    "email": "messi1@gmail.com",
     "password": "1234567"
 }
 
@@ -14,7 +14,7 @@ Content-Type: application/json
 
 {
     "email": "mirulandos@gmail.com",
-    "password": "1234567"
+    "password": "1234567s"
 }
 
 ### // list users
@@ -31,17 +31,23 @@ DELETE http://localhost:3001/delete-user/mirulando@gmail.com
 ###
 GET http://localhost:3001/orders
 
+
+// Get Order specific
 ###
-GET http://localhost:3001/orders/8eb554cc-50c3-4ebc-b1df-1ff570e71ed2
+GET http://localhost:3001/orders/e3ab5e8b-da77-4d85-80ee-58aa7e1239a0
 
 
+// Delete order specific
+###
+DELETE  http://localhost:3001/orders/e3ab5e8b-da77-4d85-80ee-58aa7e1239a0
+ 
 
 ###
 POST  http://localhost:3001/create-order
 Content-Type: application/json
 
 {
-    "orderId": "8eb554cc-50c3-4ebc-b1df-1ff570e71ed2",
+    "orderId": "e3ab5e8b-da77-4d85-80ee-58aa7e1239a0",
     "name": "MidleWare",
     "date": "20/07 as 20:00 hr",
     "location": "Rua tupi guarani 240",

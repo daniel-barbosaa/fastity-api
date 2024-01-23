@@ -31,6 +31,6 @@ export class Orders {
     }
 
     async delete(id) {
-        await sql`delete from order where id = ${id}`
+        await sql`delete from orders where orderId = ${id}`
     }
 }

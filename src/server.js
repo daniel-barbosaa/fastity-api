@@ -45,7 +45,7 @@ server.post('/register', async (req, resp) => {
   const usersExistents = users.find((user) => {
 
     if (email === user.email) {
-      return resp.status(400).send({
+      return resp.status(409).send({
         error: true,
         messagem: "Usuário já existe!"
       })
@@ -89,14 +89,14 @@ server.post('/session', async (req, resp) => {
 
   if(!user) {
     console.log('usuario nao encontrado')
-    return resp.status(400).send({
+    return resp.status(404).send({
       error: true,
       messagem: "Usuário não encontado!"
     })
   }
 
-  if (password !== user.password) {
-    return resp.status(400).send({
+  if (password !== user.password ) {
+    return resp.status(403).send({
       error: false,
       messagem: "Senha incorreta!"
     })
@@ -141,6 +141,18 @@ server.get('/orders/:id', async (req, resp) => {
   return orders
 })
 
+server.delete('/orders/:id', async (req, resp) => {
+  const orderId = req.params.id
+
+  await databaseOrders.delete(orderId)
+
+  return resp.status(204).send({
+    error: false,
+    messagem: "Deletado com sucesso!"
+  })
+})
+
+
 
 
 server.post('/create-order', async (req, resp) => {
@@ -165,13 +177,14 @@ server.post('/create-order', async (req, resp) => {
     name: name, 
     date: date,
     location: location,
-    quantity: quantity
+    quantity: quantity 
   })
 
-  return resp.status(201).send({
+  return resp.status(200).send({
     error:false,
     messagem: "Compra feita com sucesso!"
   })
+  
  
 })
 

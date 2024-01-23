@@ -24,7 +24,7 @@ const database = new Users()
 const databaseOrders = new Orders
 
 server.get('/', ( response) => {
-  return response.send("hello world")
+  return "Deu certo parça!"
 })
 // Register user
 server.post('/register', async (req, resp) => {

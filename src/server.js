@@ -24,7 +24,7 @@ const database = new Users()
 const databaseOrders = new Orders
 
 server.get('/', ( response) => {
-  return response.json("hello world")
+  return response.send("hello world")
 })
 // Register user
 server.post('/register', async (req, resp) => {
